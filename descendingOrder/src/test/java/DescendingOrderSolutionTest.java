@@ -20,4 +20,9 @@ public class DescendingOrderSolutionTest {
         assertEquals(987654321, DescendingOrderSolution.sortDesc(123456789));
     }
 
+    @Test
+    public void test_04_fromWeb(){
+        assertEquals(54421, DescendingOrderSolution.sortDesc(21445));
+    }
+
 }
