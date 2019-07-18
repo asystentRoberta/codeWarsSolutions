@@ -7,25 +7,22 @@ public class DescendingOrderSolution {
     public static int sortDesc(final int num) {
 
         String numInStringFormat = Integer.valueOf(num).toString();
-        int numberOfDigits = numInStringFormat.length();
-
+        final int numberOfDigits = numInStringFormat.length();
         List<Integer> listOfDigits = new ArrayList<>();
 
         for (int i = 0; i < numberOfDigits; i++) {
-            int maxFromNumAsInt = numInStringFormat.chars()
-                    .max()
-                    .getAsInt();
+            Integer maxFromNumAsInt = Integer.valueOf(Character.toString((char)
+                    numInStringFormat.chars()
+                            .max()
+                            .orElse((Integer.MAX_VALUE))));
 
-            listOfDigits.add(Integer.valueOf(Character.toString((char) maxFromNumAsInt)));
-            numInStringFormat = numInStringFormat
-                    .replaceFirst(Integer.valueOf(Character.toString((char) maxFromNumAsInt)).toString(), "");
+            listOfDigits.add(maxFromNumAsInt);
+            numInStringFormat = numInStringFormat.replaceFirst(maxFromNumAsInt.toString(), "");
         }
 
-        String joinedListOfDigits = listOfDigits.stream()
-                .map(String::valueOf)
-                .collect(Collectors.joining());
-        System.out.println(joinedListOfDigits);
-
-        return Integer.valueOf(joinedListOfDigits);
+        return Integer.valueOf(
+                listOfDigits.stream()
+                        .map(String::valueOf)
+                        .collect(Collectors.joining()));
     }
 }
