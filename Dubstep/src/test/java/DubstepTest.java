@@ -7,12 +7,12 @@ public class DubstepTest {
     @Test
     public void Test1() {
 
-        assertEquals("ABC", Dubstep.songDecoder("WUBWUBABCWUB"));
+        assertEquals("ABC", Dubstep.songDecodeAnotherSolution("WUBWUBABCWUB"));
     }
 
     @Test
     public void Test2() {
 
-        assertEquals("R L", Dubstep.songDecoder("RWUBWUBWUBLWUB"));
+        assertEquals("R L", Dubstep.songDecodeAnotherSolution("RWUBWUBWUBLWUB"));
     }
 }
