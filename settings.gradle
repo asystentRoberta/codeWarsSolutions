@@ -2,4 +2,5 @@ rootProject.name = 'codewars'
 include 'findTheStrayNumber'
 include 'Dubstep'
 include 'descendingOrder'
+include 'numberOfPeopleInTheBus'
 
