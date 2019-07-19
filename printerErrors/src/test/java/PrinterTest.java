@@ -9,6 +9,6 @@ public class PrinterTest {
 
         System.out.println("printerError Fixed Tests");
         String s = "aaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbmmmmmmmmmmmmmmmmmmmxyz";
-        assertEquals("3/56", Printer.printerError(s));
+        assertEquals("3/56", Printer.printerErrorWithStreamAnotherOne(s));
     }
 }

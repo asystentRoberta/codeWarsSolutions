@@ -21,4 +21,24 @@ public class Printer {
         }
         return counterOfErrors;
     }
+
+    // :) Clever
+    public static String printerErrorVeryShort(String s){
+        return s.replaceAll("[a-m]","").length() + "/" + s.length();
+    }
+
+    public static String printerErrorWithStream(String s){
+        long errs = s.chars()
+                .filter(ch -> ch >'m')
+                .count();
+        return errs + "/" + s.length();
+    }
+
+    public static String printerErrorWithStreamAnotherOne(String s){
+        int errors = (int) s.chars()
+                .mapToObj(str->String.valueOf((char) str))
+                .filter(str-> str.matches("[n-z]"))
+                .count();
+        return errors + "/" + s.length();
+    }
 }
