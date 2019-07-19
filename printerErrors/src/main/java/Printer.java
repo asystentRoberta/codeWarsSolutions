@@ -5,19 +5,20 @@ public class Printer {
 
     public static String printerError(String s) {
 
-        int lengthOfString = s.length();
-
-        String regex = "[n-z]";
-        Pattern pattern = Pattern.compile(regex);
+        Pattern pattern = Pattern.compile("[n-z]");
         Matcher matcher = pattern.matcher(s);
+
+        return getCounterOfErrors(matcher)
+                + "/"
+                + s.length();
+    }
+
+    private static int getCounterOfErrors(Matcher matcher) {
 
         int counterOfErrors = 0;
         while (matcher.find()) {
             counterOfErrors++;
         }
-
-        return counterOfErrors
-                + "/"
-                + lengthOfString;
+        return counterOfErrors;
     }
 }
