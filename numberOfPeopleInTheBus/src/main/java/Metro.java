@@ -12,4 +12,11 @@ public class Metro {
 
         return sumOfPassenger;
     }
+
+
+    public static int countPassengersStream(ArrayList<int[]> stops){
+        return stops.stream()
+                .mapToInt(x->x[0]-x[1])
+                .sum();
+    }
 }
