@@ -3,4 +3,5 @@ include 'findTheStrayNumber'
 include 'Dubstep'
 include 'descendingOrder'
 include 'numberOfPeopleInTheBus'
+include 'printerErrors'
 
