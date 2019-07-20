@@ -6,4 +6,5 @@ include 'numberOfPeopleInTheBus'
 include 'printerErrors'
 include 'onesAndZeros'
 include 'reversedWords'
+include 'highestScoringWord'
 
