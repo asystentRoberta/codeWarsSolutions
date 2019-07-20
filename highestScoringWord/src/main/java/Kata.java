@@ -9,6 +9,10 @@ public class Kata {
 
     public static String high(String s) {
 
+        if (s.isEmpty()) {
+            return "";
+        }
+
         Map<String, Integer> mapOfResults = new HashMap<>();
 
         String[] allWords = s.split(" ");

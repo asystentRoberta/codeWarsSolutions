@@ -11,4 +11,9 @@ public class KataTest {
         assertEquals("volcano", Kata.high("what time are we climbing up to the volcano"));
         assertEquals("semynak", Kata.high("take me to semynak"));
     }
+
+    @Test
+    public void testWithEmptyString(){
+        assertEquals("", Kata.high(""));
+    }
 }
