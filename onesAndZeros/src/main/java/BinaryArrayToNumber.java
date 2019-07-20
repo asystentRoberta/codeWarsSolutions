@@ -4,12 +4,12 @@ public class BinaryArrayToNumber {
 
     public static int ConvertBinaryArrayToInt(List<Integer> binary) {
 
-        String binaryAsString = "";
+        StringBuilder binaryAsString = new StringBuilder();
 
         for (Integer integer : binary) {
-            binaryAsString += String.valueOf(integer);
+            binaryAsString.append(integer);
         }
 
-        return Integer.parseInt(binaryAsString, 2);
+        return Integer.parseInt(binaryAsString.toString(), 2);
     }
 }
