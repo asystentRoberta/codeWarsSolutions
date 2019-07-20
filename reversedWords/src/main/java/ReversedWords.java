@@ -10,4 +10,11 @@ public class ReversedWords {
 
         return String.join(" ", Arrays.asList(allWords));
     }
+
+    public static String reverseWordsWithStream(String str) {
+
+        return Arrays.stream(str.split(" "))
+                .reduce((x, y) -> y + " " + x)
+                .get();
+    }
 }
