@@ -5,4 +5,5 @@ include 'descendingOrder'
 include 'numberOfPeopleInTheBus'
 include 'printerErrors'
 include 'onesAndZeros'
+include 'reversedWords'
 
