@@ -7,7 +7,14 @@ public class Metro {
         int sumOfPassenger = 0;
 
         for (int[] stop : stops) {
-            sumOfPassenger = stop[0] - stop[1];
+            int exitParameter = 0;
+            for (int i : stop) {
+                if (exitParameter == 1) {
+                    i *= -1;
+                }
+                sumOfPassenger += i;
+                exitParameter = 1;
+            }
         }
 
         return sumOfPassenger;
