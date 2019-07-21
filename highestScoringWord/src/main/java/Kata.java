@@ -1,7 +1,9 @@
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 public class Kata {
 
@@ -28,5 +30,25 @@ public class Kata {
         }
 
         return Collections.max(mapOfResults.entrySet(), Comparator.comparingInt(Map.Entry::getValue)).getKey();
+    }
+
+    public static String highWithStream(String s) {
+
+        return Arrays.stream(s.split(" "))
+                .sorted(Comparator.comparing(Kata::calculateWordScore).reversed())
+                .findFirst()
+                .get();
+    }
+
+    private static int calculateWordScore(String word) {
+
+        return word.chars().map(c -> c - (int) 'a' + 1).sum();
+    }
+
+    public static String highCleverOne(String s){
+        return Pattern.compile(" ")
+                .splitAsStream(s)
+                .max(Comparator.comparingInt((i->i.chars().map(c->c-'a'+1).sum())))
+                .orElse("");
     }
 }
