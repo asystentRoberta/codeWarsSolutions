@@ -7,4 +7,5 @@ include 'printerErrors'
 include 'onesAndZeros'
 include 'reversedWords'
 include 'highestScoringWord'
+include 'balancedNumber'
 
