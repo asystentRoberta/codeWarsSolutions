@@ -66,7 +66,7 @@ public class BalancedNumber {
 
     public static String balancedNumCleverOne(long number){
         String  str = String.valueOf(number);
-        int l = str.substring(0, str.length()/2 - str.length()%2 == 0 ? 1:0).chars().sum();
+        int l = str.substring(0, str.length()/2 - (str.length()%2 == 0 ? 1:0)).chars().sum();
         int r = str.substring(str.length()/2+1).chars().sum();
         return (l==r ? "" : "Not ") + "Balanced";
     }
