@@ -9,33 +9,25 @@ public class BalancedNumber {
         if (listOfDigits.size() == 1 || listOfDigits.size() == 2) {
             return "Balanced";
         }
+        int middleOfNumber;
 
         if (listOfDigits.size() % 2 != 0) {
-            final int sumOfLeftDigits = listOfDigits.subList(0, listOfDigits.size() / 2).stream()
-                    .mapToInt(Integer::valueOf)
-                    .sum();
-            final int sumOfRightDigits =
-                    listOfDigits.subList((listOfDigits.size() / 2) + 1, listOfDigits.size()).stream()
-                            .mapToInt(Integer::valueOf)
-                            .sum();
-            if (sumOfLeftDigits == sumOfRightDigits) {
-                return "Balanced";
-            } else {
-                return "Not Balanced";
-            }
+            middleOfNumber = listOfDigits.size() / 2;
+        } else {
+            middleOfNumber = (listOfDigits.size() / 2) - 1;
         }
-        final int sumOfLeftDigits = listOfDigits.subList(0, (listOfDigits.size() / 2) - 1).stream()
+
+        final int sumOfLeftDigits = listOfDigits.subList(0, middleOfNumber).stream()
                 .mapToInt(Integer::valueOf)
                 .sum();
-
-        final int sumOfRightDigits = listOfDigits.subList((listOfDigits.size() / 2) + 1, listOfDigits.size()).stream()
-                .mapToInt(Integer::valueOf)
-                .sum();
-
+        final int sumOfRightDigits =
+                listOfDigits.subList((listOfDigits.size() / 2) + 1, listOfDigits.size()).stream()
+                        .mapToInt(Integer::valueOf)
+                        .sum();
         if (sumOfLeftDigits == sumOfRightDigits) {
             return "Balanced";
+        } else {
+            return "Not Balanced";
         }
-
-        return "Not Balanced";
     }
 }
