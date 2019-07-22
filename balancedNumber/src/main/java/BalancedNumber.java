@@ -9,13 +9,7 @@ public class BalancedNumber {
         if (listOfDigits.size() == 1 || listOfDigits.size() == 2) {
             return "Balanced";
         }
-        int middleOfNumber;
-
-        if (listOfDigits.size() % 2 != 0) {
-            middleOfNumber = listOfDigits.size() / 2;
-        } else {
-            middleOfNumber = (listOfDigits.size() / 2) - 1;
-        }
+        int middleOfNumber = (int) (Math.ceil(listOfDigits.size() / 2.0)) - 1;
 
         final int sumOfLeftDigits = listOfDigits.subList(0, middleOfNumber).stream()
                 .mapToInt(Integer::valueOf)
