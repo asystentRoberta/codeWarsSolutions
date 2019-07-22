@@ -19,4 +19,14 @@ public class PersistTest {
 
         assertEquals(0, Persist.persistence(7));
     }
+
+    @Test
+    public void twoDigitsTest(){
+        assertEquals(3, Persist.persistence(39));
+    }
+
+    @Test
+    public void threeDigitsTest(){
+        assertEquals(4, Persist.persistence(999));
+    }
 }
