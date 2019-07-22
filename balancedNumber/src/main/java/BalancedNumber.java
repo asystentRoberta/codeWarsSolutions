@@ -6,7 +6,7 @@ public class BalancedNumber {
     public static String balancedNum(long number) {
 
         List<String> listOfDigits = Arrays.asList(String.valueOf(number).split(""));
-        if (listOfDigits.size() == 1 || listOfDigits.size() == 2) {
+        if (listOfDigits.size() < 3) {
             return "Balanced";
         }
         int middleOfNumber = (int) (Math.ceil(listOfDigits.size() / 2.0)) - 1;
@@ -18,10 +18,6 @@ public class BalancedNumber {
                 listOfDigits.subList((listOfDigits.size() / 2) + 1, listOfDigits.size()).stream()
                         .mapToInt(Integer::valueOf)
                         .sum();
-        if (sumOfLeftDigits == sumOfRightDigits) {
-            return "Balanced";
-        } else {
-            return "Not Balanced";
-        }
+        return (sumOfLeftDigits == sumOfRightDigits ? "" : "Not ") + "Balanced";
     }
 }
