@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Persist {
 
     public static int persistence(long n) {
@@ -53,5 +55,40 @@ public class Persist {
         }
         //recourse on product
         return persistenceWeirdAndHardSimmilaOne(product, times);
+    }
+
+    public static int persistenceRecursiveAgain(long n) {
+
+        if (n < 10) {
+            return 0;
+        }
+
+        final long newN = Arrays.stream(String.valueOf(n).split(""))
+                .mapToLong(Long::valueOf)
+                .reduce(1, (acc, next) -> acc * next);
+        return persistenceRecursiveAgain(newN) + 1;
+    }
+
+    public static int persisyenceClasicalModel(long n) {
+
+        int count = 1;
+        if (n < 9) {
+            return 0;
+        }
+        while (needsMorePersistence(n) > 9) {
+            n = needsMorePersistence(n);
+            count++;
+        }
+        return count;
+    }
+
+    private static long needsMorePersistence(long n) {
+
+        String p = Long.toString(n);
+        long value = 1;
+        for (int i = 0; i < p.length(); i++) {
+            value = value * Long.parseLong(p.substring(i, i + 1));
+        }
+        return value;
     }
 }

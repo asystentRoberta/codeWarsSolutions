@@ -63,8 +63,38 @@ public class PersistTest {
     }
 
     @Test
-    public void threeDigitsTestPersistenceWeirdAndHardSimmilaOne() {
+    public void singleDigitTestPersistenceRecursiveAgain() {
 
-        assertEquals(4, Persist.persistenceWeirdAndHardSimmilaOne(999));
+        assertEquals(0, Persist.persistenceRecursiveAgain(7));
+    }
+
+    @Test
+    public void twoDigitsTestPersistencRecursiveAgain() {
+
+        assertEquals(3, Persist.persistenceRecursiveAgain(39));
+    }
+
+    @Test
+    public void threeDigitsTestPersistenceRecursiveAgainl() {
+
+        assertEquals(4, Persist.persistenceRecursiveAgain(999));
+    }
+
+    @Test
+    public void singleDigitTestPersistenceClasicalModel() {
+
+        assertEquals(0, Persist.persisyenceClasicalModel(7));
+    }
+
+    @Test
+    public void twoDigitsTestPersistenceClasicalModele() {
+
+        assertEquals(3, Persist.persisyenceClasicalModel(39));
+    }
+
+    @Test
+    public void threeDigitsTestPersistencClasicalModele() {
+
+        assertEquals(4, Persist.persisyenceClasicalModel(999));
     }
 }
