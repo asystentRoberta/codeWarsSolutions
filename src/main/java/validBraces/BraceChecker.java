@@ -1,19 +1,19 @@
 package validBraces;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class BraceChecker {
 
     public boolean isValid(String braces) {
 
+        Pattern patternBrackets = Pattern.compile("\\{\\}|\\[]|\\(\\)");
+        Matcher matcher = patternBrackets.matcher(braces);
+        while (matcher.find()) {
+            braces = matcher.replaceAll("");
+            matcher = patternBrackets.matcher(braces);
+        }
 
-
-        final long parentheses = braces.chars()
-                .filter(c -> c == ')' || c == '(')
-                .count();
-        final long brackets = braces.chars()
-                .filter(c -> c == '[' || c == ']')
-                .count();
-        final long curlyBraces = braces.length() - brackets - parentheses;
-
-        return (parentheses % 2 == 0 && brackets % 2 == 0 && curlyBraces % 2 == 0);
+        return (braces.length()==0);
     }
 }

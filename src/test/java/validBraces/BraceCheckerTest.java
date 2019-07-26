@@ -20,4 +20,34 @@ public class BraceCheckerTest {
 
         assertFalse(checker.isValid("[(])"));
     }
+
+    @Test
+    public void squareBrackets() {
+
+        assertFalse(checker.isValid("(({)[]"));
+    }
+
+    @Test
+    public void curlyBrackets() {
+
+        assertFalse(checker.isValid("[(]())"));
+    }
+
+    @Test
+    public void parentheses() {
+
+        assertFalse(checker.isValid("[(]{})"));
+    }
+
+    @Test
+    public void moreTestsFromCodeWars(){
+        assertTrue(checker.isValid("(){}[]"));
+        assertTrue(checker.isValid("([{}])"));
+        assertFalse(checker.isValid("(}"));
+        assertFalse(checker.isValid("[(])"));
+        assertFalse(checker.isValid("[({})](]"));
+
+    }
+
+
 }
