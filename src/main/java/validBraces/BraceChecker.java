@@ -7,13 +7,15 @@ public class BraceChecker {
 
     public boolean isValid(String braces) {
 
-        Pattern patternBrackets = Pattern.compile("\\{\\}|\\[]|\\(\\)");
+        final String patternForBraces = "\\{\\}|\\[]|\\(\\)";
+
+        Pattern patternBrackets = Pattern.compile(patternForBraces);
         Matcher matcher = patternBrackets.matcher(braces);
+
         while (matcher.find()) {
             braces = matcher.replaceAll("");
             matcher = patternBrackets.matcher(braces);
         }
-
         return (braces.length()==0);
     }
 }
