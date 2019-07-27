@@ -2,7 +2,7 @@ package reversePolishNotationCalculator;
 
 import java.util.Stack;
 
-public class CalcWithStackSoSimple {
+public class CalcWithStackSoSimple implements CalcInt {
 
     public double evaluate(String expr) {
 

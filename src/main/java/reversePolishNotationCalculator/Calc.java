@@ -2,7 +2,7 @@ package reversePolishNotationCalculator;
 
 import java.util.ArrayDeque;
 
-public class Calc {
+public class Calc implements CalcInt{
 
     public double evaluate(String expr) {
 

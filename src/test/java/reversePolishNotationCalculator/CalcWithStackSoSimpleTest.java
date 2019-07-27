@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 
 public class CalcWithStackSoSimpleTest {
 
-    private CalcWithStackSoSimple calc = new CalcWithStackSoSimple();
+    private CalcInt calc = new CalcWithStackSoSimple();
 
     @Test
     public void shouldWorkWithEmptyString() {
