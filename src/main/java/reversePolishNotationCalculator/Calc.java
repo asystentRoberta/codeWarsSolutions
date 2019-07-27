@@ -10,7 +10,7 @@ public class Calc {
         if (expr.equals("")) {
             return 0;
         }
-        if(expr.matches("\\d*\\.\\d+") || expr.matches("\\d*")){
+        if (expr.matches("\\d*\\.\\d+") || expr.matches("\\d*")) {
             return Double.parseDouble(expr);
         }
 
@@ -27,23 +27,40 @@ public class Calc {
                 switch (s) {
                     case "+":
                         resultOfExpresion =
-                                stackOfNumbers.get(pointerOfTheStack -2) + stackOfNumbers.get(pointerOfTheStack - 1);
+                                stackOfNumbers.get(pointerOfTheStack - 2) + stackOfNumbers.get(pointerOfTheStack - 1);
+                        stackOfNumbers.remove(pointerOfTheStack - 1);
+                        stackOfNumbers.remove(pointerOfTheStack - 2);
+
+                        stackOfNumbers.add(resultOfExpresion);
+
                         break;
                     case "-":
                         resultOfExpresion =
-                                stackOfNumbers.get(pointerOfTheStack -2) - stackOfNumbers.get(pointerOfTheStack - 1);
+                                stackOfNumbers.get(pointerOfTheStack - 2) - stackOfNumbers.get(pointerOfTheStack - 1);
+                        stackOfNumbers.remove(pointerOfTheStack - 1);
+                        stackOfNumbers.remove(pointerOfTheStack - 2);
+
+                        stackOfNumbers.add(resultOfExpresion);
+
                         break;
                     case "*":
                         resultOfExpresion =
-                                stackOfNumbers.get(pointerOfTheStack-2) * stackOfNumbers.get(pointerOfTheStack - 1);
+                                stackOfNumbers.get(pointerOfTheStack - 2) * stackOfNumbers.get(pointerOfTheStack - 1);
+                        stackOfNumbers.remove(pointerOfTheStack - 1);
+                        stackOfNumbers.remove(pointerOfTheStack - 2);
+                        stackOfNumbers.add(resultOfExpresion);
                         break;
                     case "/":
                         resultOfExpresion =
-                                stackOfNumbers.get(pointerOfTheStack-2) / stackOfNumbers.get(pointerOfTheStack - 1);
+                                stackOfNumbers.get(pointerOfTheStack - 2) / stackOfNumbers.get(pointerOfTheStack - 1);
+                        stackOfNumbers.remove(pointerOfTheStack - 1);
+                        stackOfNumbers.remove(pointerOfTheStack - 2);
+                        stackOfNumbers.add(resultOfExpresion);
                         break;
                     default:
                         System.out.println("Error");
                 }
+                pointerOfTheStack = pointerOfTheStack - 1;
             }
         }
         return resultOfExpresion;
