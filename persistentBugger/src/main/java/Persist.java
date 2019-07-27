@@ -7,13 +7,13 @@ public class Persist {
         int resultToReturn = 0;
         String digitsOfNumber = String.valueOf(n);
 
-        while (digitsOfNumber.length() != 1) {
+        while (Long.valueOf(digitsOfNumber) > 9) {
 
-            final long newNumber = digitsOfNumber.chars()
-                    .map(Character::getNumericValue)
-                    .reduce(1, (a, b) -> a * b);
+            digitsOfNumber = String.valueOf(
+                    digitsOfNumber.chars()
+                            .map(Character::getNumericValue)
+                            .reduce(1, (a, b) -> a * b));
             resultToReturn++;
-            digitsOfNumber = String.valueOf(newNumber);
         }
         return resultToReturn;
     }
