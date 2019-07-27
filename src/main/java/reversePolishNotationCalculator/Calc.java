@@ -9,9 +9,6 @@ public class Calc {
         if (expr.equals("")) {
             return 0;
         }
-        if (expr.matches("\\d*\\.\\d+") || expr.matches("\\d*")) {
-            return Double.parseDouble(expr);
-        }
 
         String[] arrayOfStringExpr = expr.split(" ");
 
@@ -21,35 +18,32 @@ public class Calc {
             if (s.matches("\\d*\\.\\d+") || s.matches("\\d+")) {
                 stackOfNumbersFromExpression.push(Double.valueOf(s));
             } else {
-                switch (s) {
-                    case "+":
-                        stackOfNumbersFromExpression.push(
-                                stackOfNumbersFromExpression.pop() + stackOfNumbersFromExpression.pop()
-                        );
-
-                        break;
-                    case "-":
-                        double firstOfSubstractionNumbers = stackOfNumbersFromExpression.pop();
-                        double secondOfSubstractionNumbers = stackOfNumbersFromExpression.pop();
-                        stackOfNumbersFromExpression.push(
-                                secondOfSubstractionNumbers - firstOfSubstractionNumbers);
-
-                        break;
-                    case "*":
-                        stackOfNumbersFromExpression.push(
-                                stackOfNumbersFromExpression.pop() * stackOfNumbersFromExpression.pop()
-                        );
-                        break;
-                    case "/":
-                        double divisor = stackOfNumbersFromExpression.pop();
-                        double divided = stackOfNumbersFromExpression.pop();
-                        stackOfNumbersFromExpression.push(divided / divisor);
-                        break;
-                    default:
-                        System.out.println("Error");
-                }
+                makeCalculation(stackOfNumbersFromExpression, s);
             }
         }
         return stackOfNumbersFromExpression.pop();
+    }
+
+    private void makeCalculation(ArrayDeque<Double> stackOfNumbersFromExpression, String equationSing) {
+
+        double firstNumberOfCalculation = stackOfNumbersFromExpression.pop();
+        double secondNumberOfCalulation = stackOfNumbersFromExpression.pop();
+
+        switch (equationSing) {
+            case "+":
+                stackOfNumbersFromExpression.push(secondNumberOfCalulation + firstNumberOfCalculation);
+                break;
+            case "-":
+                stackOfNumbersFromExpression.push(secondNumberOfCalulation - firstNumberOfCalculation);
+                break;
+            case "*":
+                stackOfNumbersFromExpression.push(secondNumberOfCalulation * firstNumberOfCalculation);
+                break;
+            case "/":
+                stackOfNumbersFromExpression.push(secondNumberOfCalulation / firstNumberOfCalculation);
+                break;
+            default:
+                System.out.println("Error");
+        }
     }
 }
