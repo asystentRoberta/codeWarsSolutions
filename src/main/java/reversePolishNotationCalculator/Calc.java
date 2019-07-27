@@ -1,7 +1,6 @@
 package reversePolishNotationCalculator;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.ArrayDeque;
 
 public class Calc {
 
@@ -15,54 +14,42 @@ public class Calc {
         }
 
         String[] arrayOfStringExpr = expr.split(" ");
-        List<Double> stackOfNumbers = new ArrayList<>();
-        int pointerOfTheStack = 0;
-        double resultOfExpresion = 0.0;
+
+        ArrayDeque<Double> stackOfNumbersFromExpression = new ArrayDeque<>();
 
         for (String s : arrayOfStringExpr) {
             if (s.matches("\\d*\\.\\d+") || s.matches("\\d+")) {
-                stackOfNumbers.add(Double.valueOf(s));
-                pointerOfTheStack++;
+                stackOfNumbersFromExpression.push(Double.valueOf(s));
             } else {
                 switch (s) {
                     case "+":
-                        resultOfExpresion =
-                                stackOfNumbers.get(pointerOfTheStack - 2) + stackOfNumbers.get(pointerOfTheStack - 1);
-                        stackOfNumbers.remove(pointerOfTheStack - 1);
-                        stackOfNumbers.remove(pointerOfTheStack - 2);
-
-                        stackOfNumbers.add(resultOfExpresion);
+                        stackOfNumbersFromExpression.push(
+                                stackOfNumbersFromExpression.pop() + stackOfNumbersFromExpression.pop()
+                        );
 
                         break;
                     case "-":
-                        resultOfExpresion =
-                                stackOfNumbers.get(pointerOfTheStack - 2) - stackOfNumbers.get(pointerOfTheStack - 1);
-                        stackOfNumbers.remove(pointerOfTheStack - 1);
-                        stackOfNumbers.remove(pointerOfTheStack - 2);
-
-                        stackOfNumbers.add(resultOfExpresion);
+                        double firstOfSubstractionNumbers = stackOfNumbersFromExpression.pop();
+                        double secondOfSubstractionNumbers = stackOfNumbersFromExpression.pop();
+                        stackOfNumbersFromExpression.push(
+                                secondOfSubstractionNumbers - firstOfSubstractionNumbers);
 
                         break;
                     case "*":
-                        resultOfExpresion =
-                                stackOfNumbers.get(pointerOfTheStack - 2) * stackOfNumbers.get(pointerOfTheStack - 1);
-                        stackOfNumbers.remove(pointerOfTheStack - 1);
-                        stackOfNumbers.remove(pointerOfTheStack - 2);
-                        stackOfNumbers.add(resultOfExpresion);
+                        stackOfNumbersFromExpression.push(
+                                stackOfNumbersFromExpression.pop() * stackOfNumbersFromExpression.pop()
+                        );
                         break;
                     case "/":
-                        resultOfExpresion =
-                                stackOfNumbers.get(pointerOfTheStack - 2) / stackOfNumbers.get(pointerOfTheStack - 1);
-                        stackOfNumbers.remove(pointerOfTheStack - 1);
-                        stackOfNumbers.remove(pointerOfTheStack - 2);
-                        stackOfNumbers.add(resultOfExpresion);
+                        double divisor = stackOfNumbersFromExpression.pop();
+                        double divided = stackOfNumbersFromExpression.pop();
+                        stackOfNumbersFromExpression.push(divided / divisor);
                         break;
                     default:
                         System.out.println("Error");
                 }
-                pointerOfTheStack = pointerOfTheStack - 1;
             }
         }
-        return resultOfExpresion;
+        return stackOfNumbersFromExpression.pop();
     }
 }
