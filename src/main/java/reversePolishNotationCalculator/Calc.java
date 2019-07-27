@@ -9,8 +9,8 @@ public class Calc {
         String[] arrayOfStringExpr = expr.split(" ");
         ArrayDeque<Double> stackOfNumbersFromExpression = new ArrayDeque<>();
 
-        for (String s : arrayOfStringExpr) {
-            makeCalculation(stackOfNumbersFromExpression, s);
+        for (String fragmentOfEquation : arrayOfStringExpr) {
+            makeCalculation(stackOfNumbersFromExpression, fragmentOfEquation);
         }
 
         return stackOfNumbersFromExpression.pop();
