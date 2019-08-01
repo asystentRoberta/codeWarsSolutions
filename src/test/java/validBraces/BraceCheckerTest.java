@@ -40,14 +40,12 @@ public class BraceCheckerTest {
     }
 
     @Test
-    public void moreTestsFromCodeWars(){
+    public void moreTestsFromCodeWars() {
+
         assertTrue(checker.isValid("(){}[]"));
         assertTrue(checker.isValid("([{}])"));
         assertFalse(checker.isValid("(}"));
         assertFalse(checker.isValid("[(])"));
         assertFalse(checker.isValid("[({})](]"));
-
     }
-
-
 }

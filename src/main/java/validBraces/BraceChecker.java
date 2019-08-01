@@ -16,6 +16,6 @@ public class BraceChecker {
             braces = matcher.replaceAll("");
             matcher = patternBrackets.matcher(braces);
         }
-        return (braces.length()==0);
+        return (braces.length() == 0);
     }
 }

@@ -9,9 +9,9 @@ public class ArrayLeaders {
 
         List<Integer> leadersOfNumbers = new ArrayList<>();
 
-        for (int i = numbers.length-1, sum = 0; i >= 0; i--) {
+        for (int i = numbers.length - 1, sum = 0; i >= 0; i--) {
             if (numbers[i] > sum) {
-                leadersOfNumbers.add(0,numbers[i]);
+                leadersOfNumbers.add(0, numbers[i]);
             }
             sum += numbers[i];
         }

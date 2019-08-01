@@ -52,18 +52,19 @@ public class CalcTest {
 
     @Test
     public void complexExpresion() {
-        assertEquals("Complex expression", -4.0, calc.evaluate("1 2 3 + -"),0);
+
+        assertEquals("Complex expression", -4.0, calc.evaluate("1 2 3 + -"), 0);
     }
 
     @Test
-    public void complexExpresionFromExercise(){
-        assertEquals("Complex expression from codewars",14, calc.evaluate("5 1 2 + 4 * + 3 -"),0);
+    public void complexExpresionFromExercise() {
+
+        assertEquals("Complex expression from codewars", 14, calc.evaluate("5 1 2 + 4 * + 3 -"), 0);
     }
 
     @Test
-    public void shouldReturn0(){
-        assertEquals("Complex expression with zero result", 0,calc.evaluate("5 5 5 5 5 5 + - + - -"),0);
+    public void shouldReturn0() {
+
+        assertEquals("Complex expression with zero result", 0, calc.evaluate("5 5 5 5 5 5 + - + - -"), 0);
     }
-
-
 }

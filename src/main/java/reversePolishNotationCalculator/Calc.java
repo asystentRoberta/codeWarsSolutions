@@ -32,15 +32,15 @@ public class Calc {
                 break;
             case "-":
                 firstNumberOfEquation = stackOfNumbersFromExpression.pop();
-                secondNumberOfEquation= stackOfNumbersFromExpression.pop();
-                stackOfNumbersFromExpression.push(secondNumberOfEquation-firstNumberOfEquation);
+                secondNumberOfEquation = stackOfNumbersFromExpression.pop();
+                stackOfNumbersFromExpression.push(secondNumberOfEquation - firstNumberOfEquation);
                 break;
             case "*":
                 stackOfNumbersFromExpression
                         .push(stackOfNumbersFromExpression.pop() * stackOfNumbersFromExpression.pop());
                 break;
             case "/":
-                firstNumberOfEquation= stackOfNumbersFromExpression.pop();
+                firstNumberOfEquation = stackOfNumbersFromExpression.pop();
                 secondNumberOfEquation = stackOfNumbersFromExpression.pop();
                 stackOfNumbersFromExpression.push(secondNumberOfEquation / firstNumberOfEquation);
                 break;
