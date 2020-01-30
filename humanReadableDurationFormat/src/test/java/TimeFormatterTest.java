@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 
 public class TimeFormatterTest {
 
-  @Ignore
   @Test
   public void formatDuration() {
     assertEquals("1 second", TimeFormatter.formatDuration(1));
@@ -25,5 +24,11 @@ public class TimeFormatterTest {
     System.out.println(TimeFormatter.formatDuration(120));
     System.out.println(TimeFormatter.formatDuration(3600));
     System.out.println(TimeFormatter.formatDuration(3662));
+    System.out.println(TimeFormatter.formatDuration(3602));
+    System.out.println(TimeFormatter.formatDuration(63072001));
+    System.out.println(TimeFormatter.formatDuration(63075701));
+    System.out.println(TimeFormatter.formatDuration(68331701));
+    System.out.println(TimeFormatter.formatDuration(65703201));
+    System.out.println(TimeFormatter.formatDuration(68346401));
   }
 }

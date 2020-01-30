@@ -37,17 +37,43 @@ public class TimeFormatter {
     if (convertedInMinutes > 0) {
       secondsToSolve = secondsToSolve - convertedInMinutes * 60;
     }
-    solvedString
-        .append(timeInYears)
-        .append(" years, ")
-        .append(convertedInDays)
-        .append(" days, ")
-        .append(convertedInHours)
-        .append(" hours, ")
-        .append(convertedInMinutes)
-        .append(" minutes, ")
-        .append(secondsToSolve)
-        .append(" secunds. ");
+
+
+    if(timeInYears>1) solvedString.append(timeInYears).append(" years");
+    if(timeInYears==1) solvedString.append(timeInYears).append(" year");
+
+    if(solvedString.length()>0 && convertedInDays>0) solvedString.append(", ");
+    if(convertedInDays>1) solvedString.append(convertedInDays).append(" days");
+    if(convertedInDays==1) solvedString.append(convertedInDays).append(" day");
+
+    if(solvedString.length()>0 && convertedInHours>0) solvedString.append(", ");
+    if(convertedInHours>1) solvedString.append(convertedInHours).append(" hours");
+    if(convertedInHours==1) solvedString.append(convertedInHours).append(" hour");
+
+    if(solvedString.length()>0 && convertedInMinutes>0) solvedString.append(", ");
+    if(convertedInMinutes>1) solvedString.append(convertedInMinutes).append(" minutes");
+    if(convertedInMinutes==1) solvedString.append(convertedInMinutes).append(" minute");
+
+    if(secondsToSolve>1) {
+      if(solvedString.length()>0) solvedString.append(" and ");
+      solvedString.append(secondsToSolve).append(" seconds");
+    }
+    if(secondsToSolve==1) {
+      if(solvedString.length()>0) solvedString.append(" and ");
+      solvedString.append(secondsToSolve).append(" second");
+    }
+
+//    solvedString
+//        .append(timeInYears)
+//        .append(" years, ")
+//        .append(convertedInDays)
+//        .append(" days, ")
+//        .append(convertedInHours)
+//        .append(" hours, ")
+//        .append(convertedInMinutes)
+//        .append(" minutes, ")
+//        .append(secondsToSolve)
+//        .append(" secunds. ");
     return solvedString.toString();
   }
 }
