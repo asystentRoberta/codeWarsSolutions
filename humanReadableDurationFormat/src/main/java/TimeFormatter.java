@@ -63,17 +63,7 @@ public class TimeFormatter {
       solvedString.append(secondsToSolve).append(" second");
     }
 
-//    solvedString
-//        .append(timeInYears)
-//        .append(" years, ")
-//        .append(convertedInDays)
-//        .append(" days, ")
-//        .append(convertedInHours)
-//        .append(" hours, ")
-//        .append(convertedInMinutes)
-//        .append(" minutes, ")
-//        .append(secondsToSolve)
-//        .append(" secunds. ");
+    if (solvedString.toString().isEmpty()) return "now";
     return solvedString.toString();
   }
 }
