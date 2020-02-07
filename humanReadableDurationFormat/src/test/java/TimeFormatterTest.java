@@ -12,11 +12,14 @@ public class TimeFormatterTest {
     assertEquals("2 minutes", TimeFormatter.formatDuration(120));
     assertEquals("1 hour", TimeFormatter.formatDuration(3600));
     assertEquals("1 hour, 1 minute and 2 seconds", TimeFormatter.formatDuration(3662));
+    assertEquals("5 days, 21 hours and 29 minutes",TimeFormatter.formatDuration(509340));
     assertEquals("now", TimeFormatter.formatDuration(0));
   }
 
   @Test
   public void earlyTests(){
+    System.out.println("Na tym sie wylozyl:");
+    System.out.println(TimeFormatter.formatDuration(509340));
     System.out.println(TimeFormatter.formatDuration(33276497));
     System.out.println(TimeFormatter.formatDuration(1740497));
     System.out.println("============================================");
@@ -31,5 +34,6 @@ public class TimeFormatterTest {
     System.out.println(TimeFormatter.formatDuration(68331701));
     System.out.println(TimeFormatter.formatDuration(65703201));
     System.out.println(TimeFormatter.formatDuration(68346401));
+
   }
 }
