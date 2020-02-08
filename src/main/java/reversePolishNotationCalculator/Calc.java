@@ -34,13 +34,17 @@ public class Calc implements CalcInt{
                 stackOfNumbersFromExpression.push(secondNumberOfCalulation + firstNumberOfCalculation);
                 break;
             case "-":
-                stackOfNumbersFromExpression.push(secondNumberOfCalulation - firstNumberOfCalculation);
+                firstNumberOfEquation = stackOfNumbersFromExpression.pop();
+                secondNumberOfEquation = stackOfNumbersFromExpression.pop();
+                stackOfNumbersFromExpression.push(secondNumberOfEquation - firstNumberOfEquation);
                 break;
             case "*":
                 stackOfNumbersFromExpression.push(secondNumberOfCalulation * firstNumberOfCalculation);
                 break;
             case "/":
-                stackOfNumbersFromExpression.push(secondNumberOfCalulation / firstNumberOfCalculation);
+                firstNumberOfEquation = stackOfNumbersFromExpression.pop();
+                secondNumberOfEquation = stackOfNumbersFromExpression.pop();
+                stackOfNumbersFromExpression.push(secondNumberOfEquation / firstNumberOfEquation);
                 break;
             default:
                 System.out.println("Error");

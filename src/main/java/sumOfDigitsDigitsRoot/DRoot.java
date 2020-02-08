@@ -8,7 +8,6 @@ public class DRoot implements DigitRoot {
                 .chars()
                 .map(Character::getNumericValue)
                 .sum();
-        if(sumOfNumbers>9) sumOfNumbers = digital_root(sumOfNumbers);
-        return sumOfNumbers;
+        return sumOfNumbers<10 ? sumOfNumbers : digital_root(sumOfNumbers);
     }
 }
