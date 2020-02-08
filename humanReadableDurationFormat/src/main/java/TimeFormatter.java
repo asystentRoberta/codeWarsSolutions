@@ -5,7 +5,6 @@ public class TimeFormatter {
   TimeFormatter() {}
 
   public static String formatDuration(int seconds) {
-    if (seconds == 0) return "now";
 
     Integer[] solveInt = {
       seconds % 60,
@@ -18,7 +17,12 @@ public class TimeFormatter {
     int howManyNumbersLeft = (int) (5 - Arrays.stream(solveInt).filter(el -> el == 0).count());
     StringBuilder solveBuilder = new StringBuilder();
 
+      if (howManyNumbersLeft==0){
+          return "now";
+      }
+
     for (int i = 5; i > 0; i--) {
+
       final Integer timeInSolvingUnits = solveInt[i - 1];
       final String solveUnit = solveUnits[i - 1];
 
