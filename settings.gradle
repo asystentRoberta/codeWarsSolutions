@@ -9,4 +9,5 @@ include 'reversedWords'
 include 'highestScoringWord'
 include 'balancedNumber'
 include 'persistentBugger'
+include 'codewarsStyleRankingSystem'
 
