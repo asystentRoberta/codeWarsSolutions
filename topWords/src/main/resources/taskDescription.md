@@ -26,3 +26,9 @@ top_3_words("e e e e DDD ddd DdD: ddd ddd aa aA Aa, bb cc cC e e e")
 top_3_words("  //wont won't won't")
 # => ["won't", "wont"]
 ```
+
+For java users, the calls will actually be in the form: TopWords.top3(String s), expecting you to return a List<String>.
+
+Bonus points (not really, but just for fun):
+Avoid creating an array whose memory footprint is roughly as big as the input text.
+Avoid sorting the entire array of unique words.
