@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -12,7 +11,6 @@ public class TopWords {
     public static List<String> top3(String stringToTest) {
 
         List<String> stringToAnalize = prepareString(stringToTest);
-        List<String> listOfStringsToReturn = new ArrayList<>();
 
         Map<String, Integer> wordsMap = new HashMap<>();
         Map<Integer, String> wordsMapSorted = new TreeMap<>(Collections.reverseOrder());
@@ -26,9 +24,9 @@ public class TopWords {
         for (Map.Entry<String, Integer> entry : wordsMap.entrySet()) {
             wordsMapSorted.put(entry.getValue(), entry.getKey());
         }
+        final List<String> listOfWordsToReturn = wordsMapSorted.values().stream().limit(3).collect(Collectors.toList());
 
-
-        return listOfStringsToReturn;
+        return listOfWordsToReturn;
     }
 
     private static List<String> prepareString(String stringToTest) {
@@ -42,6 +40,7 @@ public class TopWords {
         List<String> listOfWords = Arrays.asList(removeBackslash.split(" "));
         final List<String> cleanedList = listOfWords.stream()
                 .filter(word -> !word.isBlank())
+                .filter(word -> word.matches("'?\\w+([-']\\w+)*'?"))
                 .collect(Collectors.toList());
         return cleanedList;
     }
