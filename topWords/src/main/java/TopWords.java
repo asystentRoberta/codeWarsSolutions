@@ -34,14 +34,17 @@ public class TopWords {
 
     private static List<String> prepareString(String stringToTest) {
 
-        String basicTranspose = stringToTest
-                .toLowerCase()
-                .replaceAll("[^a-zA-Z' ]", "");
+        stringToTest =
+                stringToTest.trim().toLowerCase().replaceAll("((?<=\\w)\\W+(?!\\w)|(?<!\\w)\\W+(?=\\w)|(?<!\\w)\\W+"
+                        + "(?!\\w))", " ")
+                        .replaceAll("^\\s+", "")
+                        .replaceAll("/\\s+/g", "")
+                        .replaceAll("[\n\t]", " ");
 
-        List<String> listOfWords = Arrays.asList(basicTranspose.split(" "));
+        final List<String> listToReturn = Arrays.asList(stringToTest.split(" +"));
 
-        return listOfWords.stream()
-                .filter(word -> word.matches("'?\\w+([-']\\w+)*'?"))
+        return listToReturn.stream()
+                .filter(word -> word.length() > 0)
                 .collect(Collectors.toList());
     }
 }
