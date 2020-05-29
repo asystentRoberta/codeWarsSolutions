@@ -1,10 +1,12 @@
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
-import java.util.stream.Collectors;
+
+import static java.util.Comparator.reverseOrder;
+import static java.util.stream.Collectors.counting;
+import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.toList;
 
 public class TopWords {
 
@@ -12,39 +14,23 @@ public class TopWords {
 
         List<String> stringToAnalize = prepareString(stringToTest);
 
-        Map<String, Integer> wordsMap = new HashMap<>();
-        Map<Integer, String> wordsMapSorted = new TreeMap<>(Collections.reverseOrder());
-        int frequencyCounter;
-
-        for (String word : stringToAnalize) {
-            frequencyCounter = Collections.frequency(stringToAnalize, word);
-            wordsMap.put(word, frequencyCounter);
-        }
-
-        for (Map.Entry<String, Integer> entry : wordsMap.entrySet()) {
-            wordsMapSorted.put(entry.getValue(), entry.getKey());
-        }
-
-        return wordsMapSorted
-                .values()
+        return stringToAnalize.stream()
+                .filter(e -> !e.isEmpty() && !e.isBlank() && !e.matches("[.,]+"))
+                .collect(groupingBy(String::toLowerCase, counting()))
+                .entrySet()
                 .stream()
+                .sorted(Map.Entry.comparingByValue(reverseOrder()))
                 .limit(3)
-                .collect(Collectors.toList());
+                .map(Map.Entry::getKey)
+                .collect(toList());
     }
 
     private static List<String> prepareString(String stringToTest) {
 
-        stringToTest =
-                stringToTest.trim().toLowerCase().replaceAll("((?<=\\w)\\W+(?!\\w)|(?<!\\w)\\W+(?=\\w)|(?<!\\w)\\W+"
-                        + "(?!\\w))", " ")
-                        .replaceAll("^\\s+", "")
-                        .replaceAll("/\\s+/g", "")
-                        .replaceAll("[\n\t]", " ");
-
-        final List<String> listToReturn = Arrays.asList(stringToTest.split(" +"));
-
-        return listToReturn.stream()
-                .filter(word -> word.length() > 0)
-                .collect(Collectors.toList());
+        if (stringToTest.matches("\\W+")) {
+            return Collections.emptyList();
+        }
+        stringToTest = stringToTest.toLowerCase();
+        return Arrays.asList(stringToTest.split("[^a-zA-Z0-9']+"));
     }
 }
