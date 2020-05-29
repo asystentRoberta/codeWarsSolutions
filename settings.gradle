@@ -10,4 +10,7 @@ include 'highestScoringWord'
 include 'balancedNumber'
 include 'persistentBugger'
 include 'codewarsStyleRankingSystem'
+include 'topWards'
+include 'humanReadableDurationFormat'
+include 'topWords'
 
