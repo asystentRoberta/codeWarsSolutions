@@ -10,11 +10,11 @@ import static java.util.stream.Collectors.toList;
 
 public class TopWords {
 
-    public static List<String> top3(String stringToTest) {
+    public static List<String> top3(String stringToSolve) {
 
-        List<String> stringToAnalize = prepareString(stringToTest);
+        List<String> stringToAnalise = prepareString(stringToSolve);
 
-        return stringToAnalize.stream()
+        return stringToAnalise.stream()
                 .filter(e -> !e.isEmpty() && !e.isBlank() && !e.matches("[.,]+"))
                 .collect(groupingBy(String::toLowerCase, counting()))
                 .entrySet()
@@ -25,12 +25,12 @@ public class TopWords {
                 .collect(toList());
     }
 
-    private static List<String> prepareString(String stringToTest) {
+    private static List<String> prepareString(String stringToSolve) {
 
-        if (stringToTest.matches("\\W+")) {
+        if (stringToSolve.matches("\\W+")) {
             return Collections.emptyList();
         }
-        stringToTest = stringToTest.toLowerCase();
-        return Arrays.asList(stringToTest.split("[^a-zA-Z0-9']+"));
+        stringToSolve = stringToSolve.toLowerCase();
+        return Arrays.asList(stringToSolve.split("[^a-zA-Z0-9']+"));
     }
 }
